@@ -1,5 +1,7 @@
 const express = require('express');
+const res = require('express/lib/response');
 const mongoose = require('mongoose');
+const { CountryCodes } = require('validator/lib/isISO31661Alpha2');
 require('./Course');
 
 mongoose.connect("mongodb://localhost/mongoose-course", {
@@ -12,11 +14,21 @@ mongoose.connect("mongodb://localhost/mongoose-course", {
 
 const app = express ();
 
-app.post('/cursos')
+app.post('/cursos',(req,res)=>{
+    const Curso = mongoose.model('Course');
 
-app.get("/",(req,res)=>{
-    res.send("Hola Mundo");
+    CountryCodes.create({
+        title:"Curso de Mongoose",
+        description: 'Tres'
+    }). then(doc => {
+        res.json(doc);
+    }).catch(err => {
+        console.log(err);
+        res.json(err);
+    });    
 })
 
 
-app.listen(8080, ()=> console.log("Server  started"));
+
+
+app.listen(8080, ()=> console.log("Server  started"))
