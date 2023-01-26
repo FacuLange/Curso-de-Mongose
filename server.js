@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const { CountryCodes } = require('validator/lib/isISO31661Alpha2');
 require('./Course');
 
+
 mongoose.connect("mongodb://localhost/mongoose-course", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
@@ -27,8 +28,7 @@ app.post('/cursos',(req,res)=>{
         res.json(err);
     });    
 })
-
-
+//
 
 
 app.listen(8080, ()=> console.log("Server  started"))

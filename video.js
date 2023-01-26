@@ -7,7 +7,17 @@ let videoSchema = new mongoose.Shema({
         typw: mongoose.Schema.Types.ObjectId,
         ref:'Course',
         require: true
-    }
+    },
+
+tags:[
+    new mongoose.Schema({
+        title:{
+            type: String,
+            required:true
+        }
+    })
+]
+
 });
 
 mongoose.model('Video',videoSchema);

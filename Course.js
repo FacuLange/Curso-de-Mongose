@@ -26,7 +26,7 @@ let courseSchema = new mongoose.Schema({
     }
 
 });
-
+//
 courseSchema.virtual('info')
 .get(function(){
     return `${this.Description}. Temas #{this.numberOfTropic} Fecha de lanzamiento: ${this.publishedAt}`;
